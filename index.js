@@ -85,3 +85,42 @@ window.addEventListener("click", (e) => {
 		}
 	});
 });
+
+
+
+
+
+window.addEventListener("load", () => {
+	const loader = document.getElementById("loader");
+	loader.style.display = "none";
+});
+
+
+
+
+
+window.addEventListener("load", () => {
+	anime({
+	  targets: ".intro-text",
+	  opacity: [0, 1],
+	  scale: [0.8, 1],
+	  easing: "easeOutExpo",
+	  duration: 1000,
+	  delay: 300,
+	  complete: () => {
+		setTimeout(() => {
+		  anime({
+			targets: "#intro",
+			opacity: [1, 0],
+			easing: "easeInOutQuad",
+			duration: 800,
+			complete: () => {
+			  document.getElementById("intro").style.display = "none";
+			  document.getElementById("mainContent").style.display = "block";
+			}
+		  });
+		}, 500);
+	  }
+	});
+  });
+  
