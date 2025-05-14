@@ -101,28 +101,28 @@ window.addEventListener("load", () => {
 
 window.addEventListener("load", () => {
 	anime({
-	  targets: ".intro-text",
-	  opacity: [0, 1],
-	  scale: [0.8, 1],
-	  easing: "easeOutExpo",
-	  duration: 1000,
-	  delay: 300,
-	  complete: () => {
+	targets: ".intro-text",
+	opacity: [0, 1],
+	scale: [0.8, 1],
+	easing: "easeOutExpo",
+	duration: 600,
+	delay: 100,
+	complete: () => {
 		setTimeout(() => {
-		  anime({
+		anime({
 			targets: "#intro",
 			opacity: [1, 0],
 			easing: "easeInOutQuad",
-			duration: 800,
+			duration: 500,
 			complete: () => {
-			  document.getElementById("intro").style.display = "none";
-			  document.getElementById("mainContent").style.display = "block";
+			document.getElementById("intro").style.display = "none";
+			document.getElementById("mainContent").style.display = "block";
 			}
-		  });
-		}, 500);
-	  }
+		});
+		}, 200);
+	}
 	});
-  });
+});
 
 
 
