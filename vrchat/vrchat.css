@@ -1,0 +1,375 @@
+:root {
+--color-background: #111;
+--color-background-alt: #424242;
+--color-main: #addeb3;
+--color-text: #addeb3;
+--color-link: #58855C;
+--color-accent: #0D3311;
+}
+
+
+
+::-webkit-scrollbar {width: 12px;}
+
+::-webkit-scrollbar-track {
+background: var(--color-background);
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: linear-gradient(180deg, #8fffb0, var(--color-main), #8fffb0);
+border-radius: 10px;
+border: 2px solid var(--color-background);
+box-shadow: 0 0 10px #8fffb0;
+}
+
+::-webkit-scrollbar-thumb:hover {background: linear-gradient(180deg, #cfffda, var(--color-main), #cfffda);}
+
+* {
+scrollbar-width: thin;
+scrollbar-color: var(--color-main) var(--color-background);
+}
+
+.no-select {
+user-select: none;
+}
+
+
+
+#loader {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: var(--color-background);
+color: var(--color-main);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+}
+
+.spinner {
+border: 8px solid var(--color-background-alt);
+border-top: 8px solid var(--color-text);
+border-radius: 50%;
+width: 60px;
+height: 60px;
+animation: spin 1.2s linear infinite;
+margin-bottom: 16px;
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+
+
+#intro {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: var(--color-background);
+color: var(--color-text);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+}
+
+
+
+.img-overlay {
+position: fixed;
+inset: 0;
+background-color: rgba(0, 0, 0, 0.85);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+}
+
+.img-popup {
+max-width: 90%;
+max-height: 90%;
+border-radius: 12px;
+box-shadow: 0 0 25px var(--color-main);
+transition: transform 0.2s;
+}
+
+
+
+body {
+margin: 0;
+padding: 0;
+background: url("../assets/background.png") no-repeat center center fixed;
+background-size: cover;
+color: var(--color-text);
+font-family: "VT323", monospace;
+font-size: 20px;
+cursor: url(https://cdn.custom-cursor.com/db/22390/32/animals-silly-racoons-cursor.png), default !important;
+}
+
+
+
+a {
+color: var(--color-link);
+text-decoration: underline;
+cursor: url(https://cdn.custom-cursor.com/db/22389/32/animals-silly-racoons-pointer.png), pointer !important;
+}
+
+h1 {
+font-size: 2.3em;
+font-weight: normal;
+text-align: center;
+text-shadow: 0 0 10px #addeb3, 0 0 20px #addeb3, 0 0 30px #addeb3;
+}
+
+h2 {
+font-size: 1.5em;
+font-weight: normal;
+text-align: center;
+text-shadow: 0 0 10px #addeb3, 0 0 20px #addeb3, 0 0 30px #addeb3;
+}
+
+p {
+text-align: center;
+color: var(--color-text);
+}
+
+.btn {
+cursor: url(https://cdn.custom-cursor.com/db/22389/32/animals-silly-racoons-pointer.png), pointer !important;
+font-family: "VT323", monospace;
+font-size: 20px;
+color: var(--color-text);
+background-color: var(--color-background);
+border: 2px dashed var(--color-main);
+border-radius: 10px;
+padding: 5px;
+margin: 5px;
+}
+
+@keyframes slideIn {
+from {transform: translateY(30px); opacity: 0;}
+to {transform: translateY(0); opacity: 1;}
+}
+
+.rainbow-hover:hover {
+cursor: url(https://cdn.custom-cursor.com/db/22389/32/animals-silly-racoons-pointer.png), pointer !important;
+animation: text-shadow-multicolor 0.7s linear 0s infinite normal none;
+}
+
+@keyframes text-shadow-multicolor {
+0% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18; }
+16% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #ff49ff, 0 0 30px #ff49ff, 0 0 40px #ff49ff, 0 0 55px #ff49ff, 0 0 75px #ff49ff; }
+33% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #ff6f00, 0 0 30px #ff6f00, 0 0 40px #ff6f00, 0 0 55px #ff6f00, 0 0 75px #ff6f00;}
+50% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #fffb00, 0 0 30px #fffb00, 0 0 40px #fffb00, 0 0 55px #fffb00, 0 0 75px #fffb00;}
+66% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49aaff, 0 0 30px #49aaff, 0 0 40px #49aaff, 0 0 55px #49aaff, 0 0 75px #49aaff;}
+83% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #9d00ff, 0 0 30px #9d00ff, 0 0 40px #9d00ff, 0 0 55px #9d00ff, 0 0 75px #9d00ff;}
+100% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;}
+}
+
+
+
+
+
+.site-header {
+width: 100%;
+padding: 5px 0 15px;
+background-color: var(--color-background);
+box-shadow: 0 10px 15px var(--color-main);
+}
+
+
+
+.content {
+margin: 70px auto;
+animation: slideIn 2s ease-out;
+}
+
+
+
+.info-box {
+display: flex;
+align-items: center;
+width: fit-content;
+gap: 2rem;
+padding: 1.5rem 2rem;
+margin: 0 auto 0;
+border-radius: 0.5rem;
+background-color: var(--color-background);
+}
+
+.divider {
+width: 2px;
+height: 250px;
+background-color: #addeb3;
+margin: 0 20px;
+border-radius: 5px;
+}
+
+.info-box img {
+display: block;
+margin: 0 auto 0;
+width: 200px;
+height: 200px;
+border-radius: 20%;
+border: 2px solid var(--color-accent);
+box-shadow: 0 0 10px var(--color-main);
+}
+
+.info-subtext {
+text-align: center;
+margin-top: 10px;
+font-size: 0.75rem;
+}
+
+
+
+.gallery {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+gap: 20px;
+padding: 20px;
+}
+
+.gallery img {
+width: 100%;
+height: auto;
+object-fit: cover;
+border-radius: 16px;
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+cursor: pointer;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+transform: scale(1.04);
+box-shadow: 0 0 16px var(--color-main);
+cursor: url(https://cdn.custom-cursor.com/db/22389/32/animals-silly-racoons-pointer.png), pointer !important;
+}
+
+.lightbox {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(15, 15, 15, 0.8);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 999;
+}
+
+.lightbox img {
+max-width: 90%;
+max-height: 90%;
+border-radius: 20px;
+box-shadow: 0 0 32px var(--color-main);
+}
+
+.lightbox.hidden {
+display: none;
+}
+
+
+
+.site-footer {
+width: 100%;
+padding: 20px 40px 0;
+background-color: var(--color-background);
+box-shadow: 0 -10px 15px var(--color-main);
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+}
+
+.footer-links {
+margin-bottom: 25px;
+gap: 20px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.footer-legal {
+margin-top: 15px;
+gap: 15px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+font-size: 0.8em;
+opacity: 0.7;
+}
+
+.footer-credit {
+margin-top: 10px;
+font-size: 0.9em;
+opacity: 0.7;
+}
+
+
+
+.modal {
+display: none;
+position: fixed;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+overflow: auto;
+}
+
+.modal-content {
+background-color: var(--color-background);
+padding: 30px;
+border-radius: 10px;
+max-width: 700px;
+width: 90%;
+box-shadow: 0 0 20px #addeb3;
+position: relative;
+text-align: left;
+}
+
+.close {
+position: absolute;
+top: 10px;
+right: 20px;
+color: #ff0000;
+background-color: var(--color-background-alt);
+padding: 5px 10px;
+border-radius: 10px;
+font-size: 30px;
+font-weight: bold;
+cursor: url(https://cdn.custom-cursor.com/db/22389/32/animals-silly-racoons-pointer.png), pointer !important;
+}
+
+
+
+.mobile-warning {
+display: none;
+background-color: var(--color-background);
+color: var(--color-main);
+text-align: center;
+padding: 20px;
+border-radius: 15px;
+font-size: 1.5rem;
+font-weight: bold;
+position: fixed;
+z-index: 9999;
+}
+
+@media (max-width: 768px) {
+.mobile-warning {display: block;}
+body > *:not(.mobile-warning) {display: none;}
+}

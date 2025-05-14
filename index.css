@@ -30,6 +30,10 @@ scrollbar-width: thin;
 scrollbar-color: var(--color-main) var(--color-background);
 }
 
+.no-select {
+user-select: none;
+}
+
 
 
 #loader {
@@ -76,6 +80,26 @@ display: flex;
 align-items: center;
 justify-content: center;
 z-index: 9999;
+}
+
+
+
+.img-overlay {
+position: fixed;
+inset: 0;
+background-color: rgba(0, 0, 0, 0.85);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+}
+
+.img-popup {
+max-width: 90%;
+max-height: 90%;
+border-radius: 12px;
+box-shadow: 0 0 25px var(--color-main);
+transition: transform 0.2s;
 }
 
 
