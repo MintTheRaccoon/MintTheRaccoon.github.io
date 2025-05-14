@@ -66,22 +66,40 @@ window.addEventListener("load", () => {
 const imageCount = 104;
 const imageFolder = "../assets/vrchat/";
 const imagePrefix = "vrchat (";
-const imageExtension = ".png";
-
+const imageExtension = ".jpg";
 const gallery = document.getElementById("gallery");
-const fragment = document.createDocumentFragment();
 
-for (let i = 1; i <= imageCount; i++) {
-	const img = document.createElement("img");
-	img.src = `${imageFolder}${imagePrefix}${i})${imageExtension}`;
-	img.alt = "VRChat Screenshot";
-	img.loading = "lazy";
-	img.style.width = "100%";
-	img.style.borderRadius = "12px";
-	fragment.appendChild(img);
+let loadedImages = 0;
+const imagesPerLoad = 8;
+
+function loadImages() {
+  if (loadedImages >= imageCount) return;
+
+  const fragment = document.createDocumentFragment();
+
+  for (let i = loadedImages + 1; i <= Math.min(loadedImages + imagesPerLoad, imageCount); i++) {
+    const img = document.createElement("img");
+    img.src = `${imageFolder}${imagePrefix}${i})${imageExtension}`;
+    img.alt = "VRChat Screenshot";
+    img.loading = "lazy";
+    img.style.width = "100%";
+    img.style.borderRadius = "12px";
+    fragment.appendChild(img);
+  }
+
+  gallery.appendChild(fragment);
+  loadedImages += imagesPerLoad;
 }
 
-gallery.appendChild(fragment);
+loadImages();
+
+
+window.addEventListener('scroll', () => {
+  const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
+  if (nearBottom) {
+    loadImages();
+  }
+});
 
 
 
