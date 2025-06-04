@@ -63,7 +63,7 @@ window.addEventListener("load", () => {
 
 
 
-const imageCount = 104;
+const imageCount = 112;
 const imageFolder = "../assets/vrchat/";
 const imagePrefix = "vrchat (";
 const imageExtension = ".jpg";
@@ -73,22 +73,28 @@ let loadedImages = 0;
 const imagesPerLoad = 8;
 
 function loadImages() {
-  if (loadedImages >= imageCount) return;
+	if (loadedImages >= imageCount) return;
 
-  const fragment = document.createDocumentFragment();
+	const fragment = document.createDocumentFragment();
 
-  for (let i = loadedImages + 1; i <= Math.min(loadedImages + imagesPerLoad, imageCount); i++) {
-    const img = document.createElement("img");
-    img.src = `${imageFolder}${imagePrefix}${i})${imageExtension}`;
-    img.alt = "VRChat Screenshot";
-    img.loading = "lazy";
-    img.style.width = "100%";
-    img.style.borderRadius = "12px";
-    fragment.appendChild(img);
-  }
+	for (let i = loadedImages + 1; i <= Math.min(loadedImages + imagesPerLoad, imageCount); i++) {
+		const img = document.createElement("img");
+		img.src = `${imageFolder}${imagePrefix}${i})${imageExtension}`;
+		img.alt = "VRChat Screenshot";
+		img.loading = "lazy";
+		img.style.width = "100%";
+		img.style.borderRadius = "12px";
 
-  gallery.appendChild(fragment);
-  loadedImages += imagesPerLoad;
+		img.addEventListener("click", () => {
+			lightboxImg.src = img.src;
+			lightbox.classList.remove("hidden");
+		});
+
+		fragment.appendChild(img);
+	}
+
+	gallery.appendChild(fragment);
+	loadedImages += imagesPerLoad;
 }
 
 loadImages();

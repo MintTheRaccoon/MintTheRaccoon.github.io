@@ -24,7 +24,19 @@ for filename in os.listdir(image_folder):
             new_filename = os.path.splitext(filename)[0] + ".jpg"
             new_filepath = os.path.join(image_folder, new_filename)
             img.convert("RGB").save(new_filepath, "JPEG", quality=85)
+
     except Exception as e:
-        print(f"Skipped {filename} due to error: {e}")
+        print(f"-----Skipped {filename} due to error: {e}")
 
     print(f"Converted {filename} to {new_filename}")
+
+    try:
+        os.remove(filepath)
+    except Exception as e:
+        print(f"Failed to delete {filename}: {e}")
+
+    print(f"Deleted {filename}")
+
+print("Conversion complete!")
+input()
+exit(0)
