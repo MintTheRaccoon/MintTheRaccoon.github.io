@@ -103,7 +103,7 @@ loadImages();
 window.addEventListener('scroll', () => {
   const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
   if (nearBottom) {
-    loadImages();
+	loadImages();
   }
 });
 
@@ -135,7 +135,7 @@ img.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll(".enlargeable").forEach((img) => {
-	img.style.cursor = "zoom-in";
+	img.style.cursor = "url(https://cdn.custom-cursor.com/db/22389/32/animals-silly-racoons-pointer.png), pointer";
 
 	img.addEventListener("click", () => {
 		const overlay = document.createElement("div");

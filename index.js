@@ -1,10 +1,33 @@
+const emoji1 = document.querySelector(".emoji1");
+const emoji2 = document.querySelector(".emoji2");
+const title = document.querySelector(".hover-title.rainbow-hover");
+const pfpImg = document.querySelector(".about-box img");
+
+emoji1.addEventListener("click", () => {
+pfpImg.src = "assets/fototeta.png";
+pfpImg.classList.remove("mint-rainbow");
+});
+
+title.addEventListener("click", () => {
+pfpImg.classList.add("rainbow-hue");
+});
+
+emoji2.addEventListener("click", () => {
+pfpImg.src = "assets/pfp.png";
+pfpImg.classList.remove("mint-rainbow");
+});
+
+
+
+
+
 const facts = [
 	"Raccoons can rotate their hind feet 180° for climbing down trees headfirst.",
 	"They have incredibly sensitive front paws that can detect textures underwater.",
 	"A group of raccoons is called a 'nursery' or a 'snooze', not a 'gaze'.",
 	"Raccoons can remember solutions to tasks for at least 3 years!",
 	"Their Latin name 'Procyon lotor' means 'before the dog, the washer'.",
-	"Urban raccoons have learned to open doors, jars, and even latches.",
+	"Urban raccoons have learned to open doors, jars and even latches.",
 	"They can make over 50 different vocal sounds.",
 	"Raccoons are known to wash their food — but not always!",
 	"Baby raccoons are called kits.",
@@ -51,13 +74,13 @@ nextArt();
 
 
 fetch("https://api.ipify.org?format=json")
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("ip").textContent = data.ip;
-  })
-  .catch(() => {
-    document.getElementById("ip").textContent = "Failed to get IP 😢";
-  });
+.then(res => res.json())
+.then(data => {
+	document.getElementById("ip").textContent = data.ip;
+})
+.catch(() => {
+	document.getElementById("ip").textContent = "Failed to get IP 😢";
+});
 
 
 
@@ -130,7 +153,7 @@ window.addEventListener("load", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll(".enlargeable").forEach((img) => {
-	img.style.cursor = "zoom-in";
+	img.style.cursor = "url(https://cdn.custom-cursor.com/db/22389/32/animals-silly-racoons-pointer.png), pointer";
 
 	img.addEventListener("click", () => {
 		const overlay = document.createElement("div");

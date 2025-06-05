@@ -79,7 +79,7 @@ color: var(--color-text);
 display: flex;
 align-items: center;
 justify-content: center;
-z-index: 9999;
+z-index: 9998;
 }
 
 
@@ -121,6 +121,12 @@ a {
 color: var(--color-link);
 text-decoration: underline;
 cursor: url(https://cdn.custom-cursor.com/db/22389/32/animals-silly-racoons-pointer.png), pointer !important;
+}
+
+.no-style-a a {
+color: inherit;
+text-decoration: none;
+cursor: url(https://cdn.custom-cursor.com/db/22390/32/animals-silly-racoons-cursor.png), default !important;
 }
 
 h1 {
@@ -174,7 +180,16 @@ animation: text-shadow-multicolor 0.7s linear 0s infinite normal none;
 100% { text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;}
 }
 
+@keyframes hue-rotate-rainbow {
+0%   { filter: hue-rotate(0deg); }
+100% { filter: hue-rotate(360deg); }
+}
 
+.rainbow-hue {
+animation: hue-rotate-rainbow 3s linear infinite;
+filter: hue-rotate(120deg) brightness(1.1) saturate(1.2);
+transition: filter 0.3s ease;
+}
 
 
 
@@ -243,6 +258,11 @@ height: auto;
 border-radius: 10px;
 border: 2px dashed var(--color-main);
 object-fit: contain;
+}
+
+.art-box-subtext {
+margin: 1px 0 15px 0;
+font-size: 1rem;
 }
 
 
