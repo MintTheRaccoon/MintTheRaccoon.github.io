@@ -427,7 +427,6 @@ backdrop-filter: blur(4px);
 
 @media (max-width: 768px) {
 .mobile-warning {display: flex;}
-body > *:not(.mobile-warning) {display: none;}
 
 body {
 font-size: 18px;

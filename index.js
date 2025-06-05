@@ -1,14 +1,15 @@
 function dismissWarning() {
-  document.getElementById("mobileWarning").style.display = "none";
-  localStorage.setItem("mobileWarningDismissed", "true");
+	document.getElementById("mobileWarning").style.display = "none";
+	localStorage.setItem("mobileWarningDismissed", "true");
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  const dismissed = localStorage.getItem("mobileWarningDismissed") === "true";
+const dismissed = localStorage.getItem("mobileWarningDismissed") === "true";
+const isMobile = window.innerWidth <= 768;
 
-  if (!dismissed) {
-    document.getElementById("mobileWarning").style.display = "flex";
-  }
+if (!dismissed && isMobile) {
+	document.getElementById("mobileWarning").style.display = "flex";
+}
 });
 
 
