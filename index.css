@@ -408,19 +408,79 @@ cursor: url(https://cdn.custom-cursor.com/db/22389/32/animals-silly-racoons-poin
 
 
 .mobile-warning {
+position: fixed;
+top: 0;
+left: 0;
+z-index: 9999;
+width: 100%;
+height: 100%;
+background-color: rgba(17, 17, 17, 0.95);
 display: none;
-background-color: var(--color-background);
-color: var(--color-main);
+flex-direction: column;
+justify-content: center;
+align-items: center;
 text-align: center;
 padding: 20px;
-border-radius: 15px;
-font-size: 1.5rem;
-font-weight: bold;
-position: fixed;
-z-index: 9999;
+font-size: 1.4em;
+backdrop-filter: blur(4px);
 }
 
 @media (max-width: 768px) {
-.mobile-warning {display: block;}
-body > *:not(.mobile-warning) {display: none;}
+.mobile-warning {display: flex;}
+
+body {
+font-size: 18px;
+padding: 0 10px;
+background-size: cover;
+background-attachment: scroll;
+}
+
+.about-box,
+.art-box,
+.ip-box,
+.fun-fact-box,
+.vrchat-box {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 20px auto;
+padding: 10px;
+}
+
+.about-box img,
+.vrchat-img,
+#artImage {
+width: 100%;
+max-width: 300px;
+height: auto;
+}
+
+.about-text ul {
+padding-left: 20px;
+text-align: left;
+}
+
+.vrchat-content {
+flex-direction: column;
+text-align: center;
+}
+
+.site-header h1,
+.site-header p,
+.site-footer {
+text-align: center;
+padding: 0 10px;
+}
+
+.footer-links,
+.footer-legal {
+flex-direction: column;
+gap: 5px;
+align-items: center;
+}
+
+.modal-content {
+width: 95%;
+font-size: 16px;
+}
 }

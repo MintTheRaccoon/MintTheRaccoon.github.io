@@ -18,7 +18,10 @@
 
 
 <body>
-	<div class="mobile-warning">Mobile devices are not supported yet.<br>switch to a desktop idiot!</div>
+	<div class="mobile-warning" id="mobileWarning">
+		<p>Mobile view may not work as intended.<br>Switch to a desktop idiot!</p>
+		<button class="btn" onclick="dismissWarning()">Continue anyway</button>
+	</div>
 
 	<div id="loader">
 		<div class="spinner no-select"></div>

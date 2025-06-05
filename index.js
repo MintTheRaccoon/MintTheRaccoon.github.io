@@ -1,20 +1,37 @@
+function dismissWarning() {
+  document.getElementById("mobileWarning").style.display = "none";
+  localStorage.setItem("mobileWarningDismissed", "true");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const dismissed = localStorage.getItem("mobileWarningDismissed") === "true";
+
+  if (!dismissed) {
+    document.getElementById("mobileWarning").style.display = "flex";
+  }
+});
+
+
+
+
+
 const emoji1 = document.querySelector(".emoji1");
 const emoji2 = document.querySelector(".emoji2");
 const title = document.querySelector(".hover-title.rainbow-hover");
 const pfpImg = document.querySelector(".about-box img");
 
 emoji1.addEventListener("click", () => {
-pfpImg.src = "assets/fototeta.png";
-pfpImg.classList.remove("mint-rainbow");
+	pfpImg.src = "assets/fototeta.png";
+	pfpImg.classList.remove("rainbow-hue");
 });
 
 title.addEventListener("click", () => {
-pfpImg.classList.add("rainbow-hue");
+	pfpImg.classList.add("rainbow-hue");
 });
 
 emoji2.addEventListener("click", () => {
-pfpImg.src = "assets/pfp.png";
-pfpImg.classList.remove("mint-rainbow");
+	pfpImg.src = "assets/pfp.png";
+	pfpImg.classList.remove("rainbow-hue");
 });
 
 

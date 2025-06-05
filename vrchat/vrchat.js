@@ -1,3 +1,20 @@
+function dismissWarning() {
+  document.getElementById("mobileWarning").style.display = "none";
+  localStorage.setItem("mobileWarningDismissed", "true");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const dismissed = localStorage.getItem("mobileWarningDismissed") === "true";
+
+  if (!dismissed) {
+    document.getElementById("mobileWarning").style.display = "flex";
+  }
+});
+
+
+
+
+
 document.querySelectorAll("#open-privacy, #open-disclaimer, #open-impressum").forEach(link => {
 	link.addEventListener("click", (e) => {
 		e.preventDefault();
