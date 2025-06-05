@@ -386,15 +386,11 @@ backdrop-filter: blur(4px);
 body {
 font-size: 18px;
 padding: 0 10px;
+background: url("../assets/background2.png") no-repeat center center fixed;
 background-size: cover;
-background-attachment: scroll;
 }
 
-.about-box,
-.art-box,
-.ip-box,
-.fun-fact-box,
-.vrchat-box {
+.info-box {
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -402,22 +398,10 @@ margin: 20px auto;
 padding: 10px;
 }
 
-.about-box img,
-.vrchat-img,
-#artImage {
-width: 100%;
-max-width: 300px;
-height: auto;
-}
-
-.about-text ul {
-padding-left: 20px;
-text-align: left;
-}
-
-.vrchat-content {
-flex-direction: column;
-text-align: center;
+.divider {
+margin: 20px 20px;
+position: absolute;
+rotate: 90deg;
 }
 
 .site-header h1,

@@ -431,8 +431,8 @@ backdrop-filter: blur(4px);
 body {
 font-size: 18px;
 padding: 0 10px;
+background: url("assets/background2.png") no-repeat center center fixed;
 background-size: cover;
-background-attachment: scroll;
 }
 
 .about-box,
