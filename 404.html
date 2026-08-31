@@ -1,0 +1,114 @@
+---
+permalink: /404.html
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Mint's Webdump: 404</title>
+	<meta name="description" content="Full of chaotic dragon raccoon energy!">
+	<link rel="icon" type="image/x-icon" href="assets/pfp.webp">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+	<style>
+		/* Root Stuff */
+		:root {
+		--color-background: #111;
+		--color-background-alt: #424242;
+		--color-main: #addeb3;
+		--color-text: #addeb3;
+		--color-link: #58855C;
+		--color-accent: #0D3311;
+
+		--cursor: url(assets/cursor.png), default;
+		--pointer: url(assets/pointer.png), pointer;
+		}
+
+
+		/* Base HTML */
+		body {
+		margin: 0;
+		padding: 0;
+		background: url("assets/background.webp") no-repeat center center fixed;
+		background-size: cover;
+		font-family: "VT323", monospace;
+		font-size: 20px;
+		color: var(--color-text);
+		cursor: var(--cursor);
+		}
+
+		a {
+		color: var(--color-link);
+		text-decoration: underline;
+		cursor: var(--pointer);
+		}
+
+		h1 {
+		font-size: 2.3em;
+		font-weight: normal;
+		text-align: center;
+		text-shadow: 0 0 10px #addeb3, 0 0 20px #addeb3, 0 0 30px #addeb3;
+		}
+
+		p {
+		text-align: center;
+		color: var(--color-text);
+		}
+
+
+		/* Website */
+		.content {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		}
+
+
+		.box {
+		padding: 15px 32px 15px 32px;
+		border-radius: 10px;
+		width: fit-content;
+		text-align: center;
+		background-color: var(--color-background);
+		box-shadow: 0 0 10px var(--color-main);
+		}
+
+
+		/* Mobile View */
+		@media (max-width: 768px) {
+		body {
+		font-size: 18px;
+		margin: 0;
+		padding: 0 0px;
+		background: url("assets/background2.webp") no-repeat center center fixed;
+		background-size: cover;
+		}
+
+		.box {
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		max-width: 95%;
+		box-sizing: border-box;
+		text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<div class="box">
+			<h1>404 - Page not found</h1>
+			<p>Whoops! Looks like you're lost in the void 🌀</p>
+			<a href="../">Take me back to safety</a>
+		</div>
+	</div>
+</body>
+</html>

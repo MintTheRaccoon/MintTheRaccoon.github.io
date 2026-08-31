@@ -1,0 +1,93 @@
+<!DOCTYPE html> <!-- py -m http.server 25565 -->
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Mint's Webdump</title>
+	<meta name="description" content="Full of chaotic dragon raccoon energy!">
+	<link rel="icon" type="image/x-icon" href="assets/pfp.webp">
+	<link rel="stylesheet" href="index.css">
+	<script src="index.js" defer></script>
+	<script src="raccoon_images.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+	<meta property="og:title" content="Mint's Webdump 🦝🐲"/>
+	<meta property="og:description" content="Full of chaotic dragon raccoon energy!"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="https://www.mintypaws.de/"/>
+	<meta property="og:image" content="https://www.mintypaws.de/assets/fototeta.webp"/>
+	<meta property="theme-color" content="#ADEBB3"/>
+</head>
+
+<body>
+	<div id="loader-container"></div>
+
+	<div id="header"></div>
+
+	<div class="box-wobble-toggle" id="box-wobble-toggle">
+		<button class="btn" onclick="boxWobbleToggle()">Disable Wobble</button>
+	</div>
+
+	<div class="content">
+		<div class="about-box box">
+			<img src="assets/pfp.webp" class="enlargeable no-select" alt="Profile Picture">
+			<div class="about-text">
+				<h2>/// SUBJECT_13-9-14-20.log</h2>
+				<p>
+					<b>Codename:</b> M.I.N.T - Multistage Interference Navigation Test<br>
+					<b>Species:</b> Draccoon (dragon / raccoon hybrid).<br>
+					<b>Threat Level:</b> Non-hostile / unpredictable<br>
+					<b>Appearance:</b> Mint-green markings, Curved horns, Large tail, Distorted wing structures.<br>
+					<b>Behavior:</b> Observational, curiosity-driven. Attracted to luminous objects.<br>
+					<b>Location:</b> Den-like structure. Environmental stability not confirmed.<br>
+				</p>
+			</div>
+		</div>
+
+		<div class="greeting-box box">
+			<h2 id="greeting-text">Loading Greeting...</h2>
+		</div>
+
+		<div class="fun-fact-box box">
+			<h2>🦝 Raccoon Fun Fact of the Day</h2>
+			<p id="raccoonFact" class="fun-fact">Loading Fact...</p>
+		</div>
+
+		<div class="image-box box">
+			<h2>🎨 Random Raccoon Picture</h2>
+			<div class="image-wrapper no-select">
+				<div id="image-loader" class="image-loading">
+					<div class="image-spinner"></div>
+				</div>
+
+				<img id="image-img" class="enlargeable" alt="A fun raccoon image appears here!">
+			</div>
+
+			<div class="image-box-subtext"><sup>Click the pic for a closer look!</sup></div>
+			<button class="btn" onclick="nextImg()">Show another!</button>
+		</div>
+
+		<div class="ip-box box">
+			<h2>👀 Look, I stole your IP Adress</h2>
+			<div class="ip-address" id="ip">Stealing IP...</div>
+			<div class="ip-box-subtext"><sup>Stole your fridge... for more information visit <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">here</a></sup></div>
+		</div>
+
+		<div class="vrchat-box box">
+		<h2>🌐 Step into my VRChat world</h2>
+		<div class="vrchat-content">
+			<div class="vrchat-text">
+				<p>See all of my VRChat Pictures!<br>Click below to visit the gallery.</p>
+				<a href="/vrchat" class="btn">📷 Open VRChat Gallery</a>
+			</div>
+			<img src="assets/vrchat/vrchat (0).jpg" alt="VRChat Preview" class="enlargeable vrchat-img no-select">
+		</div>
+		</div>
+	</div>
+
+	<div id="footer"></div>
+</body>
+</html>

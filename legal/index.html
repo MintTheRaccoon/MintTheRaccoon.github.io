@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Mint's Webdump</title>
+	<meta name="description" content="Full of chaotic dragon raccoon energy!">
+	<link rel="icon" type="image/x-icon" href="../assets/pfp.webp">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+	<style>
+		/* Root Stuff */
+		:root {
+		--color-background: #111;
+		--color-background-alt: #424242;
+		--color-main: #addeb3;
+		--color-text: #addeb3;
+		--color-link: #58855C;
+		--color-accent: #0D3311;
+
+		--cursor: url(../assets/cursor.png), default;
+		--pointer: url(../assets/pointer.png), pointer;
+		}
+
+
+		/* Scrollbar */
+		::-webkit-scrollbar { width: 12px; }
+		::-webkit-scrollbar-track { background: var(--color-background); border-radius: 10px; }
+		::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #8fffb0, var(--color-main), #8fffb0); border: 2px solid var(--color-background); border-radius: 10px; box-shadow: 0 0 10px #8fffb0; }
+		::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #cfffda, var(--color-main), #cfffda); }
+		* { scrollbar-width: thin; scrollbar-color: var(--color-main) var(--color-background); }
+
+
+		/* Tags */
+		.no-select {
+		user-select: none;
+		}
+
+		.no-style-a a {
+		color: inherit;
+		text-decoration: none;
+		cursor: var(--cursor);
+		}
+
+
+		/* Base HTML */
+		body {
+		margin: 0;
+		padding: 0;
+		background: url("../assets/background.webp") no-repeat center center fixed;
+		background-size: cover;
+		font-family: "VT323", monospace;
+		font-size: 20px;
+		color: var(--color-text);
+		cursor: var(--cursor);
+		}
+
+		a {
+		color: var(--color-link);
+		text-decoration: underline;
+		cursor: var(--pointer);
+		}
+
+		b {
+		text-shadow: 0 0 5px #addeb3, 0 0 10px #addeb3;
+		}
+
+		p {
+		text-align: center;
+		color: var(--color-text);
+		}
+
+		h1 {
+		font-size: 2.3em;
+		font-weight: normal;
+		text-align: center;
+		text-shadow: 0 0 10px #addeb3, 0 0 20px #addeb3, 0 0 30px #addeb3;
+		}
+
+		h2 {
+		font-size: 1.5em;
+		font-weight: normal;
+		text-align: center;
+		text-shadow: 0 0 10px #addeb3, 0 0 20px #addeb3, 0 0 30px #addeb3;
+		}
+
+		.btn {
+		padding: 5px;
+		margin: 5px;
+		cursor: var(--pointer);
+		font-family: "VT323", monospace;
+		font-size: 20px;
+		color: var(--color-text);
+		background-color: var(--color-background);
+		border: 2px dashed var(--color-main);
+		border-radius: 10px;
+		}
+
+
+		/* Website */
+		.content {
+		margin: 70px auto;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		}
+
+		.box {
+		max-width: 900px;
+		margin: 30px auto;
+		padding: 15px 32px 15px 32px;
+		border-radius: 10px;
+		width: fit-content;
+		text-align: center;
+		background-color: var(--color-background);
+		box-shadow: 0 0 10px var(--color-main);
+		}
+
+
+		.license-details,
+		.license-details * {
+		text-align: left;
+		}
+
+		.license-details {
+		display: none;
+		}
+
+		.license-details.is-open {
+		display: block;
+		}
+
+
+		/* Mobile View */
+		@media (max-width: 768px) {
+		body {
+		font-size: 18px;
+		margin: 0;
+		padding: 0 0px;
+		background: url("../assets/background2.webp") no-repeat center center fixed;
+		background-size: cover;
+		}
+
+		.box {
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		max-width: 95%;
+		box-sizing: border-box;
+		text-align: center;
+		}
+		}
+	</style>
+
+	<script>
+		async function loadComponent(filePath, targetId, { content = {}, afterLoad } = {}) {
+			const response = await fetch(filePath);
+			if (!response.ok) throw new Error(`Could not load ${filePath} (${response.status})`);
+
+			const target = document.getElementById(targetId);
+			if (!target) throw new Error(`Could not find the component target #${targetId}`);
+
+			target.innerHTML = await response.text();
+
+			for (const [selector, value] of Object.entries(content)) {
+				const element = target.querySelector(selector);
+				if (!element) throw new Error(`Could not find ${selector} inside ${filePath}`);
+				element.textContent = value;
+			}
+
+			afterLoad?.(target);
+			return target;
+		}
+
+		loadComponent("loader.html", "loader-container")
+			.catch((error) => {
+				console.error("Could not load site loader", error);
+				document.getElementById("loader-container")?.remove();
+			});
+		loadComponent("../header.html", "header", {
+			content: { ".header-text": "Everything about my website and boring legal stuff!" }
+		}).catch(console.error);
+		loadComponent("../footer.html", "footer", {}).catch(console.error);
+
+		function toggleLicense() {
+			const details = document.getElementById("license-details");
+			const button = document.getElementById("license-toggle");
+			const isOpen = details.classList.toggle("is-open");
+			button.setAttribute("aria-expanded", isOpen);
+			button.textContent = isOpen ? "Show less" : "Show full license";
+		}
+	</script>
+</head>
+
+
+
+<body>
+	<div id="loader-container"></div>
+
+	<div id="header"></div>
+
+	<div class="box" id="about">
+		<h2>About</h2>
+		<p>
+			This website is a small personal project that I made just for fun, improving my web development skills and for friends, but everyone is welcome to explore it.
+		</p>
+	</div>
+
+	<div class="content">
+		<div class="box" id="privacy">
+			<h2>Privacy Policy</h2>
+			<p>
+				This site does not use analytics, cookies, tracking scripts, or advertising technologies.<br>
+				For the IP joke, your public IP address is processed only to display it locally in your browser.<br>
+			</p>
+		</div>
+
+		<div class="box" id="imprint">
+			<h2>Imprint</h2>
+			<p>
+				This website is a non-commercial, privately operated, purely personal hobby project.<br><br>
+
+				Responsible Contact:<br>
+				MintDraccoon (pseudonym)<br>
+				Email: <a href="mailto:contact@mintypaws.de">contact@mintypaws.de</a><br><br>
+
+				The Website's source code is openly available on GitHub:<br>
+				<a href="https://github.com/MintDraccoon/MintDraccoon.github.io" target="_blank">github.com/MintDraccoon/MintDraccoon.github.io</a>
+			</p>
+		</div>
+
+		<div class="box" id="license">
+			<h2>License</h2>
+			<p class="license-summary">
+				&copy; 2026 MintDraccoon. All rights reserved.<br><br>
+				You may view, study and modify this website's source code locally for personal learning. You may not republish it, use it as the basis for a public website, sell it or reuse its original assets without permission.
+			</p>
+			<button class="btn" id="license-toggle" type="button" aria-expanded="false" aria-controls="license-details" onclick="toggleLicense()">Show full license</button>
+
+			<div class="license-details" id="license-details">
+				<h1>© 2026 MintDraccoon. All rights reserved.</h1>
+
+				<h2>1. Overview</h2>
+				<p>This repository contains source code, original assets, and third-party content used for the MintDraccoon website.<br><br></p>
+
+				<p>This license applies only to the original work created by MintDraccoon. Third-party content is excluded from this license and remains subject to the respective license or terms of its original creator or provider.</p>
+
+				<h2>2. Source Code</h2>
+				<p>The original source code contained in this repository may be:</p>
+				<ul>
+					<li>Viewed and studied for educational purposes.</li>
+					<li>Used locally for personal learning and experimentation.</li>
+					<li>Modified locally for personal learning and experimentation.</li>
+				</ul>
+
+				<p>The source code may not be:
+				<ul>
+					<li>Redistributed or republished as a separate project.</li>
+					<li>Used as the basis of another publicly accessible website without prior permission.</li>
+					<li>Sold, sublicensed, or commercially distributed.</li>
+					<li>Used to create a substantially similar copy of the MintDraccoon website.</li>
+					<li>Presented or distributed as the original work of another person.</li>
+					<li>Used to reproduce the website or its functionality for commercial purposes without prior written permission.</li>
+				</ul>
+
+				<p>Any use outside the permissions granted by this license requires prior written permission from MintDraccoon.</p>
+
+				<h2>3. Original Assets</h2>
+				<p>The following assets are original works created by or belonging to MintDraccoon and are not licensed for reuse:</p>
+				<ul>
+					<li>Profile pictures (PFPs)</li>
+					<li>Website backgrounds</li>
+					<li>Custom cursors</li>
+					<li>Other original visual assets created by MintDraccoon</li>
+				</ul>
+
+				<p>These assets may not be:</p>
+				<ul>
+					<li>Copied or extracted for use in other projects.</li>
+					<li>Modified or redistributed.</li>
+					<li>Reuploaded to other websites or platforms.</li>
+					<li>Sold or used for commercial purposes.</li>
+					<li>Included in another project or repository.</li>
+					<li>Used as training material for another publicly distributed work without permission.</li>
+				</ul>
+
+				<p>Ownership and copyright of these original assets remain with their respective copyright holder.</p>
+
+				<h2>4. Third-Party Content</h2>
+				<p>Third-party content included in or referenced by this project is not covered by this license.</p>
+
+				<p>This includes, but is not limited to:</p>
+				<ul>
+					<li>Images from Pexels</li>
+					<li>Images from Pixabay</li>
+					<li>Images from Unsplash</li>
+					<li>Third-party libraries</li>
+					<li>Fonts</li>
+					<li>Icons</li>
+					<li>APIs</li>
+					<li>External services</li>
+					<li>Embedded content</li>
+					<li>Other content created by third parties</li>
+				</ul>
+
+				<p>Third-party content remains subject to the license, terms, and conditions provided by its respective creator, owner, or service provider.</p>
+
+				<h2>5. Pexels</h2>
+				<p>Images obtained from Pexels are subject to the Pexels License.</p>
+
+				<p>Source: <a href="https://www.pexels.com/">https://www.pexels.com/</a></p>
+				<p>License: <a href="https://www.pexels.com/license/">https://www.pexels.com/license/</a></p>
+
+				<p>The rights granted by the Pexels License apply independently of this license.</p>
+
+				<h2>6. Pixabay</h2>
+				<p>Images obtained from Pixabay are subject to the Pixabay Content License.</p>
+
+				<p>Source: <a href="https://pixabay.com/">https://pixabay.com/</a></p>
+				<p>License: <a href="https://pixabay.com/service/license-summary/">https://pixabay.com/service/license-summary/</a></p>
+
+				<p>The rights granted by the Pixabay Content License apply independently of this license.</p>
+
+				<h2>7. Unsplash</h2>
+				<p>Images obtained from Unsplash are subject to the Unsplash License.</p>
+
+				<p>Source: <a href="https://unsplash.com/">https://unsplash.com/</a></p>
+				<p>License: <a href="https://unsplash.com/license">https://unsplash.com/license</a></p>
+
+				<p>The rights granted by the Unsplash License apply independently of this license.</p>
+
+				<h2>8. VRChat Content</h2>
+				<p>Images captured in VRChat and included in this project are considered original assets of MintDraccoon only to the extent that MintDraccoon holds the applicable rights to the captured content.</p>
+
+				<p>This license does not claim ownership over:</p>
+				<ul>
+					<li>VRChat itself.</li>
+					<li>VRChat trademarks or branding.</li>
+					<li>Avatars, worlds, assets, or other content created by third parties.</li>
+					<li>Any copyrighted material belonging to other creators that may appear in captured images.</li>
+				</ul>
+
+				<p>Third-party rights remain unaffected and must be respected independently of this license.</p>
+
+				<h2>9. No Transfer of Rights</h2>
+				<p>Nothing in this license transfers ownership or copyright of the original assets or source code to another person.</p>
+
+				<p>Permission to view or study the repository does not grant ownership or unrestricted rights to use, reproduce, distribute, or commercialize its contents.</p>
+
+				<h2>10. Copyright</h2>
+				<p>Unless otherwise stated, all original source code and original assets covered by this license are the intellectual property of MintDraccoon.</p>
+
+				<p>Copyright © 2026 MintDraccoon. All rights reserved.</p>
+
+				<h2>11. Permission Requests</h2>
+				<p>Requests to use the source code or original assets outside the permissions granted by this license may be directed to MintDraccoon.</p>
+
+				<h2>12. Disclaimer</h2>
+				<p>The source code and original assets are provided "as is", without warranties of any kind, to the extent permitted by applicable law.</p>
+
+				<p>MintDraccoon is not responsible for any damage or loss resulting from the use of the source code or original assets.</p>
+
+				<h2>13. License Changes</h2>
+				<p>MintDraccoon reserves the right to modify the terms of this license for future versions of the project.</p>
+
+				<p>Material previously distributed under an earlier version of this license remains subject to the terms applicable to that version, unless otherwise agreed or required by applicable law.</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="footer"></div>
+</body>
+</html>

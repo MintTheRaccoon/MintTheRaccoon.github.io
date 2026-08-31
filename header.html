@@ -1,0 +1,40 @@
+<style>
+		.site-header {
+		width: 100%;
+		padding: 5px 0 15px;
+		background-color: var(--color-background);
+		box-shadow: 0 10px 15px var(--color-main);
+		}
+
+		.header-title {
+		color: inherit;
+		text-decoration: none;
+		cursor: var(--pointer);
+		}
+
+		@keyframes hue-rotate-rainbow {
+		0% { filter: hue-rotate(0deg); }
+		100% { filter: hue-rotate(360deg); }
+		}
+
+		.rainbow-hover:hover {
+		cursor: var(--pointer);
+		animation: hue-rotate-rainbow 1s linear infinite;
+		transition: filter 0.5s ease;
+		}
+
+		.rainbow-hue {
+		animation: hue-rotate-rainbow 2s linear infinite;
+		transition: filter 0.5s ease;
+		}
+</style>
+
+<header class="site-header no-select">
+	<h1>
+		<span class="header-emoji1 rainbow-hover">🦝</span>
+		<a class="header-title" href="/">Mint's Webdump</a>
+		<span class="header-emoji2 rainbow-hover">🐲</span>
+	</h1>
+
+	<p class="header-text">Hello stranger! You've found my tiny corner of the internet.</p>
+</header>
