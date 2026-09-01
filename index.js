@@ -233,18 +233,42 @@ window.addEventListener("DOMContentLoaded", nextImg);
 const ipElement = document.getElementById("ip");
 
 fetch("/api/ip", { cache: "no-store" })
-.then(response => {
-	if (!response.ok) throw new Error("Could not get IP");
-	return response.json();
-})
-.then(({ ip, version }) => {
-	if (!ip || version === "none") {
-		ipElement.textContent = "No IP available";
-		return;
-	}
+	.then(response => {
+		if (!response.ok) throw new Error("Could not get IP");
+		return response.json();
+	})
+	.then(async ({ ip, type }) => {
+		if (!ip || !type) {
+			throw new Error("No IP available");
+		}
 
-	ipElement.textContent = `${ip}`;
-})
-.catch(() => {
-	ipElement.textContent = "No IP available";
-});
+		if (type === "ipv4") {
+			ipElement.textContent = ip;
+			return;
+		}
+
+		if (type === "ipv6") {
+			try {
+				const response = await fetch("https://api4.ipify.org?format=json", {cache: "no-store"});
+
+				if (!response.ok) throw new Error("ipify failed");
+
+				const data = await response.json();
+
+				if (data.ip) {
+					ipElement.textContent = data.ip;
+					return;
+				}
+			} catch (error) {
+				console.log("Could not get IPv4 from ipify:", error);
+			}
+
+			ipElement.textContent = ip;
+			return;
+		}
+
+		throw new Error("Unknown IP type");
+	})
+	.catch(() => {
+		ipElement.textContent = "No IP available";
+	});
